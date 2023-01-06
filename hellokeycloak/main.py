@@ -8,7 +8,7 @@ import logging
 from keycloak import KeycloakOpenID
 from pathlib import Path
 
-logger = logging.getLogger("hellocloud")
+logger = logging.getLogger("hellokeycloak")
 
 
 class Settings(BaseSettings):
@@ -17,7 +17,7 @@ class Settings(BaseSettings):
 
     keycloak_server_url: str = "http://localhost:8090/"
     keycloak_realm: str = "cloudportal"
-    keycloak_client_id: str = "hellocloud"
+    keycloak_client_id: str = "hellokeycloak"
 
     class Config:
         env_file = ".env"
@@ -77,7 +77,7 @@ async def read_users_me(current_user: User = Depends(get_current_user)):
 
 
 def run():
-    uvicorn.run("hellocloud.main:app", host=settings.host, port=settings.port)
+    uvicorn.run("hellokeycloak.main:app", host=settings.host, port=settings.port)
 
 
 if __name__ == "__main__":
