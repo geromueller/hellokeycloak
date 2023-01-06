@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "hellocloud"
+version = "0.1.0"
+description = "Simple FastAPI based application to show Keycloak usage"
+authors = ["Gero Müller <gero.mueller@inform-software.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.74.1"
+pydantic = {extras = ["dotenv"], version = "^1.10.4"}
+python-keycloak = "^2.8.0"
+Jinja2 = "^3.1.2"
+
+[tool.poetry.dev-dependencies]
+uvicorn = "^0.17.5"
+flake8 = "^6.0.0"
+black = "^22.12.0"
+isort = "^5.11.4"
+
+[tool.poetry.scripts]
+serve = "hellocloud.main:run"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

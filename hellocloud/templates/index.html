@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>Hello Cloud</title>
+    <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet" />
+    <script type="text/javascript">
+      var keycloakConfig = {
+        url: "{{ keycloak_server_url }}",
+        realm: "{{ keycloak_realm }}",
+        clientId: "{{ keycloak_client_id }}",
+      };
+      var keycloakInitOptions = {
+        onLoad: "check-sso",
+        silentCheckSsoRedirectUri:
+          "{{ url_for('static', path='/silent-check-sso.html') }}",
+      };
+    </script>
+  </head>
+  <body>
+    <h2>Hello Cloud</h2>
+    <h3>Keycloak client Example</h3>
+    <p><b>Keycloak:</b> <pre id="keycloak"></pre></p>
+    <p><b>Frontend:</b> <pre id="frontend"></pre></p>
+    <p><b>Backend:</b> <pre id="backend"></pre></p>
+    <button id="login" enabled onclick="keycloak.login();">Login</button>
+    <button id="logout" disabled onclick="keycloak.logout();">Logout</button>
+    <script src="{{ url_for('static', path='/keycloak.js') }}"></script>
+    <script src="{{ url_for('static', path='/main.js') }}"></script>
+  </body>
+</html>
